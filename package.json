@@ -1,0 +1,29 @@
+{
+  "name": "tamsjs",
+  "version": "1.0.0",
+  "description": "JavaScript Library for ZK Time & Attendance Devices",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphealolams/tamsjs.git"
+  },
+  "keywords": [
+    "attendance",
+    "time",
+    "ZK-techco",
+    "tams"
+  ],
+  "author": "Ajilore Raphael Olamide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphealolams/tamsjs/issues"
+  },
+  "homepage": "https://github.com/raphealolams/tamsjs#readme"
+}
