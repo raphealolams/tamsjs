@@ -108,12 +108,12 @@ class Tams{
      */
     isDeviceOnline(ip, timeout = 1)
     {
-        $handler = curl_init($ip);
-        curl_setopt_array($handler, [ CURLOPT_TIMEOUT => $timeout, CURLOPT_RETURNTRANSFER => true ]);
-        $response = curl_exec($handler);
-        curl_close($handler);
+      let handler = curl_init($ip);
+      curl_setopt_array(handler, [ CURLOPT_TIMEOUT => timeout, CURLOPT_RETURNTRANSFER => true ]);
+      let response = curl_exec(handler);
+      curl_close(handler);
 
-        return boolean(response)
+      return boolean(response)
     }
 
 
