@@ -95,9 +95,8 @@ class Tams{
      *
      * @return array arguments list.
     */
-    getValidCommandsArgs()
-    {
-        return this.parseableArgs
+    getValidCommandsArgs() {
+      return this.parseableArgs
     }
 
     /**
@@ -106,14 +105,36 @@ class Tams{
      * @param int $timeout seconds to wait for device.
      * @return boolean <b>true</b> if device is alive, <b>false</b> otherwise.
      */
-    isDeviceOnline(ip, timeout = 1)
-    {
+    isDeviceOnline(ip, timeout = 1) {
       let handler = curl_init($ip);
       curl_setopt_array(handler, [ CURLOPT_TIMEOUT => timeout, CURLOPT_RETURNTRANSFER => true ]);
       let response = curl_exec(handler);
       curl_close(handler);
 
       return boolean(response)
+    }
+
+    /**
+    *
+    *  
+    */
+    isAlive() {
+      return this.isDeviceOnline(this.getIp(), this.connectionTimeout())
+    }
+
+     /**
+     * Throws an Exception when device is not alive.
+     *
+     * @return boolean <b><code>true</code></b> if there is a connection with the device.
+     * @throws ConnectionError
+     */
+    checkforConnection()
+    {
+        if (!this.isAlive()) {
+            throw new ConnectionError('Imposible iniciar conexión con dispositivo ', this.getIp());
+        }
+
+        return true;
     }
 
 
