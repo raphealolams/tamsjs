@@ -1,3 +1,5 @@
+import ConnectionError from './Exceptions/ConnectionError'
+
 class Tams{
 
   constructor(options, soapProvider, zklibProvider){
