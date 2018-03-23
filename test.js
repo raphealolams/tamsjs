@@ -33,13 +33,22 @@
       return option;
     }
 
-    const result = getInstance()
-    console.log(result);
+    console.log(getInstance());
 
    
 
   
-    
-  
-  
-  
+    function executeSoapCommand()
+    {
+      let soapRequest = [
+        'hello'
+      ]
+
+      console.log(typeof soapRequest)
+      // let response = typeof soapRequest == 'object' ? 'array sucks' : 'not an array';
+      let response = !typeof soapRequest == 'object' ? 'array sucks' : 'not an array';
+
+      return response
+    }
+
+    console.log(executeSoapCommand())

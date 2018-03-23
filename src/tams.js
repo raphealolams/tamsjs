@@ -1,6 +1,8 @@
+'use strict';
+
 import ConnectionError from './Exceptions/ConnectionError'
 
-class Tams{
+export default class Tams{
 
   constructor(options, soapProvider, zklibProvider){
     this.ip = options['ip'];
@@ -69,7 +71,7 @@ class Tams{
     * @return array list of commands available.
   */
  commandsAvailable(){
-
+   return this.soapCommandsAvailable.concat(this.zklibCommandsAvailable)
  }
 
   /**
@@ -79,6 +81,8 @@ class Tams{
   soapCommandsAvailable(options)
   {
       // return TADSoap::get_commands_available($options);
+      // return this.zklibProvider
+      
   }
 
 
@@ -118,7 +122,7 @@ class Tams{
 
     /**
     *
-    *  
+    * @return boolean <b><code>true</code></b> if the device is online
     */
     isAlive() {
       return this.isDeviceOnline(this.getIp(), this.connectionTimeout())
@@ -132,11 +136,25 @@ class Tams{
      */
     checkforConnection()
     {
-        if (!this.isAlive()) {
-            throw new ConnectionError('Imposible iniciar conexión con dispositivo ', this.getIp());
-        }
+      if (!this.isAlive()) throw new ConnectionError('Error Connecting with this device', this.getIp());
 
-        return true;
+      return true;
+    }
+
+    /**
+     * Tells if the command requested is in valid commands set.
+     *
+     * @param string $command command requested.
+     * @return boolean <code><b>true</b></code> if the command es known by the class.
+     * @throws UnrecognizedCommand
+      */
+    checkForValidCommand(command)
+    {
+      let tadCommands = this.commandsAvailable();
+
+      // if () throw new UnrecognizedCommand(`Command ${command} not Found`, 404);
+
+      return true;
     }
 
 

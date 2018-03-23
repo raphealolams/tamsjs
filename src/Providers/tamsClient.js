@@ -1,5 +1,0 @@
-class TamsClient{
-  constructor(){
-    
-  }
-}
