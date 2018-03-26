@@ -1,9 +1,9 @@
 'use strict';
 
-import commands from './soapCommands';
-import TamsResponse from '../tamsResponse';
+const commands = require('./soapCommand');
+const TamsResponse = require('../tamsResponse');
 
-export default class TamsSoap{
+module.exports =  class TamsSoap{
 
   /**
     * Build a <code>TADSoap</code> instance to allow communication with the device via SOAP api.

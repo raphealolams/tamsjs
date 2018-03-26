@@ -1,6 +1,6 @@
 'use strict'
 
-export default class TamsResponse{
+module.exports = class TamsResponse{
   constructor(request, encoding) {
     
   }

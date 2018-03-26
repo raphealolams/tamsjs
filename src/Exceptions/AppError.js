@@ -1,6 +1,6 @@
 'use strict'
 
-class AppError extends Error {
+module.exports = class AppError extends Error {
   constructor (message, status) {
   
     // Calling parent constructor of base Error class.
@@ -19,5 +19,3 @@ class AppError extends Error {
     
   }
 }
-
-export default AppError = new AppError()

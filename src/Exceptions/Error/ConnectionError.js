@@ -1,9 +1,9 @@
 'use strict'
 
-import AppError from './AppError';
+const baseError = require('../AppError');
 
-
-class ConnectionError extends AppError {
+const AppError = new baseError()
+class ConnectionError extends baseError {
   constructor (message, status) {
     
     // Providing default message and overriding status code.
@@ -11,4 +11,4 @@ class ConnectionError extends AppError {
   }
 }; 
 
-export default ConnectionError = new ConnectionError()
+module.exports.ConnectionError = new ConnectionError()

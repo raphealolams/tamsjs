@@ -1,19 +1,16 @@
 'use strict'
 
-//import Soap module
-import soap from 'soap'
+//const Soap module
+const soap = require('soap')
 
-// import the tams client from its provider
-// import the tams ZK techo library
-import TamsSoap from './Providers/tamsClient';
-import TamsZKLib from './Providers/tamsZKLib';
-import Tams from './tams';
+// const the tams client require(its provider
+// const the tams ZK techo library
+const TamsSoap = require('./Providers/tamsSoap');
+const TamsZKLib = require('./Providers/tamsZKLib');
+const Tams = require('./tams');
 
 
-async function main() {
-
-}
-export default class TamsFactory{
+module.exports = class TamsFactory{
   constructor(options = {}){
     this.options = options;
   }
@@ -24,8 +21,8 @@ export default class TamsFactory{
   * @return TAD class instance.
   */
   async getInstance(){
-    let option = this.options;
-    this.setOptions(this.getDefaultOptions() , option);
+    let options = this.options;
+    this.setOptions(this.getDefaultOptions() , options);
 
     let soapOptions = {
       location: `http://${options['ip']}/iWsService`,
@@ -36,9 +33,8 @@ export default class TamsFactory{
     };
 
     try {
-      let soapConnection = await soap.createClientAsync(soapOptions)
-
-      return new Tams(new TamsSoap(soapConnection, soapOptions), new TamsZKLib(options), options)
+      let soapConnection = await soap.createClientAsync(soapOptions.url)
+      if(soapConnection) return new Tams(new TamsSoap(soapConnection, soapOptions), new TamsZKLib(options), options)
       console.log("Connected to the ZKTechco service")
 	  } 
     catch (e) {

@@ -1,8 +1,8 @@
 'use strict';
 
-import ConnectionError from './Exceptions/ConnectionError'
+const ConnectionError = require('./Exceptions/Error/ConnectionError')
 
-export default class Tams{
+module.exports = class Tams{
 
   constructor(options, soapProvider, zklibProvider){
     this.ip = options['ip'];

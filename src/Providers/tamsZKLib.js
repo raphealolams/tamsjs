@@ -2,7 +2,7 @@
 
 
 
-export default class TamsZKLib{
+module.exports = class TamsZKLib{
   constructor(){
     
   }
